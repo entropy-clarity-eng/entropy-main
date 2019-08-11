@@ -31,7 +31,7 @@ namespace entropy_api
 
             //Set up the database connection
             //To-Do: the below needs adding to an environment variable
-            var connection = @"Server=(localdb)\mssqllocaldb;Database=EFGetStarted.AspNetCore.NewDb;Trusted_Connection=True;ConnectRetryCount=0";
+            var connection = @"Server=localhost;Database=EntropyDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<EntropyContext>
             (options => options.UseSqlServer(connection));
         }
@@ -52,6 +52,8 @@ namespace entropy_api
 
             app.UseHttpsRedirection();
             app.UseMvc();
+
+
         }
     }
 }
