@@ -11,5 +11,7 @@ namespace entropy.entities
         { }
 
         public DbSet<Thought> Thoughts { get; set; }
+
+        
     }
 }

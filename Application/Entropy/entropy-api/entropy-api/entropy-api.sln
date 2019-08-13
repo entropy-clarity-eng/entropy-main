@@ -5,6 +5,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entropy-api", "entropy-api\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entropy.entities", "entropy.entities\entropy.entities.csproj", "{2B6F6A4F-EF9C-4479-8408-114D03A4F9A0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "entropy.datamigrations", "entropy.datamigrations.app\entropy.datamigrations.csproj", "{6A8E663C-FC24-4EBE-82A1-9E0AE55A92D5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev-docs", "dev-docs", "{EB961997-B399-4DE0-9071-EECA2B2AB856}"
+	ProjectSection(SolutionItems) = preProject
+		add-migration.md = add-migration.md
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -19,5 +26,9 @@ Global
 		{2B6F6A4F-EF9C-4479-8408-114D03A4F9A0}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2B6F6A4F-EF9C-4479-8408-114D03A4F9A0}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2B6F6A4F-EF9C-4479-8408-114D03A4F9A0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A8E663C-FC24-4EBE-82A1-9E0AE55A92D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A8E663C-FC24-4EBE-82A1-9E0AE55A92D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A8E663C-FC24-4EBE-82A1-9E0AE55A92D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A8E663C-FC24-4EBE-82A1-9E0AE55A92D5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
