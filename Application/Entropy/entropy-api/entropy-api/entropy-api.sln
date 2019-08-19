@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "dev-docs", "dev-docs", "{EB961997-B399-4DE0-9071-EECA2B2AB856}"
 	ProjectSection(SolutionItems) = preProject
 		add-migration.md = add-migration.md
+		execute-migrations.md = execute-migrations.md
 	EndProjectSection
 EndProject
 Global
