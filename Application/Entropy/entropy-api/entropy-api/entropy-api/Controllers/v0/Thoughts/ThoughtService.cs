@@ -3,20 +3,17 @@ using entropy.entities;
 
 namespace entropyapi.Controllers.v0.Thoughts
 {
-    public class ThoughtRepository: IThoughtRepository, IDisposable
+    public class ThoughtService: IThoughtService
     {
 
         private EntropyContext context;
 
-        public ThoughtRepository(EntropyContext context)
+        public ThoughtService(EntropyContext context)
         {
             this.context = context;
         }
 
-        public void Dispose()
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public void InsertThought(Thought thought)
         {

@@ -2,42 +2,46 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using entropy.entities;
+using entropyapi.Controllers.v0.Thoughts;
 using Microsoft.AspNetCore.Mvc;
 
-// For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
 namespace entropyapi.Controllers
 {
     [Route("api/v1/[controller]")]
     public class ThoughtsController : Controller
     {
-        // GET: api/values
-        [HttpGet]
-        public IEnumerable<string> Get()
-        {
-            return new string[] { "value1", "value2" };
-        }
+        private IThoughtService thoughtService;
 
-        // GET api/values/5
+        public ThoughtsController(IThoughtService thoughtService)
+        {
+            this.thoughtService = thoughtService;
+        }
+        
         [HttpGet("{id}")]
         public string Get(int id)
         {
             return "value";
         }
 
-        // POST api/values
+        /// <summary>
+        /// Create a new thought
+        /// </summary>
+        /// <param name="thought">ThoughtModel</param>        
         [HttpPost]
-        public void Post([FromBody]string value)
+        public void Post([FromBody]Thought thought)
         {
+            this.thoughtService.InsertThought(thought);
         }
 
-        // PUT api/values/5
+       
         [HttpPut("{id}")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
-        // DELETE api/values/5
+        
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
