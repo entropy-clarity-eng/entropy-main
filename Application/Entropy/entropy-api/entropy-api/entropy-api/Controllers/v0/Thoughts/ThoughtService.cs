@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 using entropy.entities;
 
 namespace entropyapi.Controllers.v0.Thoughts
@@ -15,9 +16,10 @@ namespace entropyapi.Controllers.v0.Thoughts
 
         
 
-        public void InsertThought(Thought thought)
+        public async Task InsertThought(Thought thought)
         {
-            this.context.Thoughts.Add(thought);
+            await this.context.Thoughts.AddAsync(thought);
+            await this.context.SaveChangesAsync();
         }
 
         

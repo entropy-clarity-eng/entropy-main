@@ -30,9 +30,9 @@ namespace entropyapi.Controllers
         /// </summary>
         /// <param name="thought">ThoughtModel</param>        
         [HttpPost]
-        public void Post([FromBody]Thought thought)
+        public Task Post([FromBody]Thought thought)
         {
-            this.thoughtService.InsertThought(thought);
+            return this.thoughtService.InsertThought(thought);
         }
 
        
