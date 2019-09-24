@@ -12,6 +12,7 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.EntityFrameworkCore;
 using entropy.entities;
+using entropyapi.Controllers.v0.Thoughts;
 
 namespace entropy_api
 {
@@ -34,6 +35,10 @@ namespace entropy_api
             var connection = @"Server=localhost;Database=EntropyDB;Trusted_Connection=True;ConnectRetryCount=0";
             services.AddDbContext<EntropyContext>
             (options => options.UseSqlServer(connection));
+
+            ///Add Feature Services
+
+            services.AddScoped<IThoughtService, ThoughtService>();
         }
 
        
