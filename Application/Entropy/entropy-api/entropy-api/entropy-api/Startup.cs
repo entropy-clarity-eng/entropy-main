@@ -32,9 +32,9 @@ namespace entropy_api
 
             //Set up the database connection
             //To-Do: the below needs adding to an environment variable
-            var connection = @"Server=localhost;Database=EntropyDB;Trusted_Connection=True;ConnectRetryCount=0";
+            var sqlConnection = Environment.GetEnvironmentVariable("ENTROPY_SQL_CONNECTION");
             services.AddDbContext<EntropyContext>
-            (options => options.UseSqlServer(connection));
+            (options => options.UseSqlServer(sqlConnection ?? throw new InvalidOperationException("Could not extract the connection string from ENTROPY_SQL_CONNECTION variable")));
 
             ///Add Feature Services
 
