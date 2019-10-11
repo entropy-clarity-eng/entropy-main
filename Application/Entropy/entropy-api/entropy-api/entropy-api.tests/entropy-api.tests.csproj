@@ -14,4 +14,11 @@
     <PackageReference Include="coverlet.collector" Version="1.0.1" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="v0\" />
+    <Folder Include="v0\Thoughts\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\entropy-api\entropy-api.csproj" />
+  </ItemGroup>
 </Project>

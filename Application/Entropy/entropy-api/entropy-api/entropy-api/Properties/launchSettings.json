@@ -17,10 +17,9 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "entropy_api": {
+    "entropy-api": {
       "commandName": "Project",
       "launchBrowser": true,
-      "launchUrl": "api/values",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
