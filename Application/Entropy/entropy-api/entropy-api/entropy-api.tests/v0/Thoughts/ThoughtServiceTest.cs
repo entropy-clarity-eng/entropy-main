@@ -16,6 +16,33 @@ namespace entropy_api.tests
         [Fact]
         public void InsertThought_ValidThought_ShouldBePersisted()
         {
+            throw new NotImplementedException();
         }
+
+        [Fact]
+        public void InsertThought_ValidThought_ShouldBePersistedWithAnId()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Fact]
+        public void InsertThought_ValidThought_ShouldBePersistedWithTheCorrectUTCTime()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Fact]
+        public void InsertThought_NullThought_ShouldThrowException()
+        {
+            throw new NotImplementedException();
+        }
+
+        [Fact]
+        public void InsertThought_EmptyThoughtText_ShouldThrowException()
+        {
+            throw new NotImplementedException();
+        }
+
+        
     }
 }
