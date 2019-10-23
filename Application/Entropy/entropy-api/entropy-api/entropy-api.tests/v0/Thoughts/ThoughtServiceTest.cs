@@ -1,4 +1,6 @@
 using System;
+using entropy.entities;
+using entropy_api.tests.helpers;
 using entropyapi.Controllers.v0.Thoughts;
 using Xunit;
 
@@ -6,17 +8,23 @@ namespace entropy_api.tests
 {
     public class ThoughtServiceTest
     {
-        private readonly ThoughtService _thoughtService;
+        
 
         public ThoughtServiceTest()
         {
-            this._thoughtService = new ThoughtService(null);
+           
         }
 
         [Fact]
         public void InsertThought_ValidThought_ShouldBePersisted()
         {
-            throw new NotImplementedException();
+            var options = InMemoryOptionsHelper.BuildNewOptions();
+
+            using (var context = new EntropyContext(options))
+            {
+                
+
+            }
         }
 
         [Fact]
@@ -42,6 +50,8 @@ namespace entropy_api.tests
         {
             throw new NotImplementedException();
         }
+
+       
 
         
     }

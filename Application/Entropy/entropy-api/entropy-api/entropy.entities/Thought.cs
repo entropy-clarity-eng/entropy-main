@@ -2,11 +2,10 @@
 
 namespace entropy.entities
 {
-    public class Thought
+    public class Thought:ThoughtBindable
     {
         public Guid Id { get; set; }
         public DateTime UTCTimeRecorded { get; set; }
-        public String ThoughtText { get; set; }
         public Guid UserId { get; set; }
     }
 }
