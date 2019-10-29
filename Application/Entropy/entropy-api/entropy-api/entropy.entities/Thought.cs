@@ -7,5 +7,12 @@ namespace entropy.entities
         public Guid Id { get; set; }
         public DateTime UTCTimeRecorded { get; set; }
         public Guid UserId { get; set; }
+
+        public Thought() { }
+
+        public Thought(ThoughtBindable newThought)
+        {
+            this.ThoughtText = newThought.ThoughtText;
+        }
     }
 }

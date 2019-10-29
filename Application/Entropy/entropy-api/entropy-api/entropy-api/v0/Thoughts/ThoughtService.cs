@@ -16,8 +16,10 @@ namespace entropyapi.Controllers.v0.Thoughts
 
         
 
-        public async Task InsertThought(Thought thought)
+        public async Task InsertThought(ThoughtBindable thoughtToInsert)
         {
+            var thought = new Thought(thoughtToInsert);
+   
             thought.UTCTimeRecorded = DateTime.UtcNow;
             this.context.Thoughts.Add(thought);
             await this.context.SaveChangesAsync();

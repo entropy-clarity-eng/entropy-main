@@ -6,6 +6,6 @@ namespace entropyapi.Controllers.v0.Thoughts
 {
     public interface IThoughtService
     {
-        Task InsertThought(Thought thought);
+        Task InsertThought(ThoughtBindable thoughtToInsert);
     }
 }
