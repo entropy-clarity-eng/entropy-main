@@ -52,27 +52,63 @@ namespace entropy_api.tests
         }
 
         [Fact]
-        public void InsertThought_ValidThought_ShouldBePersistedWithAnId()
+        public async Task InsertThought_ValidThought_ShouldBePersistedWithAnId()
         {
-            throw new NotImplementedException();
+            //Arrange
+            var options = InMemoryOptionsHelper.BuildNewOptions();
+
+            //Act
+            await this.InsertThought(new ThoughtBindable() { ThoughtText = "New Thought" }, options);
+
+            //Assert (using a separate context verifies data was saved correctly)
+            using (var context = new EntropyContext(options))
+            {
+                Assert.NotEqual(context.Thoughts.First().Id,Guid.Empty);
+            }
         }
 
         [Fact]
-        public void InsertThought_ValidThought_ShouldBePersistedWithTheCorrectUTCTime()
+        public async Task InsertThought_ValidThought_ShouldBePersistedWithTheCorrectUTCTime()
         {
-            throw new NotImplementedException();
+            //Arrange
+            var options = InMemoryOptionsHelper.BuildNewOptions();
+
+            //Act
+            await this.InsertThought(new ThoughtBindable() { ThoughtText = "New Thought" }, options);
+
+            //Assert (using a separate context verifies data was saved correctly)
+            using (var context = new EntropyContext(options))
+            {
+                Assert.Equal(context.Thoughts.First().UTCTimeRecorded, DateTime.UtcNow, TimeSpan.FromSeconds(1));
+            }
         }
 
         [Fact]
-        public void InsertThought_NullThought_ShouldThrowException()
+        public async Task InsertThought_NullThought_ShouldThrowException()
         {
-            throw new NotImplementedException();
+            //Arrange
+            var options = InMemoryOptionsHelper.BuildNewOptions();
+
+            
+            //Assert
+            using (var context = new EntropyContext(options))
+            {
+               await Assert.ThrowsAsync<ArgumentException>(async () => await InsertThought(null, options));
+            }
         }
 
         [Fact]
-        public void InsertThought_EmptyThoughtText_ShouldThrowException()
+        public async Task InsertThought_EmptyThoughtText_ShouldThrowException()
         {
-            throw new NotImplementedException();
+            //Arrange
+            var options = InMemoryOptionsHelper.BuildNewOptions();
+
+
+            //Assert
+            using (var context = new EntropyContext(options))
+            {
+                await Assert.ThrowsAsync<ArgumentException>(async () => await InsertThought(new ThoughtBindable() {ThoughtText = "" }, options));
+            }
         }
 
 
