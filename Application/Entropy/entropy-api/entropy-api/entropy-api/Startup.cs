@@ -31,7 +31,6 @@ namespace entropy_api
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Set up the database connection
-            //To-Do: the below needs adding to an environment variable
             var sqlConnection = Environment.GetEnvironmentVariable("ENTROPY_SQL_CONNECTION");
             services.AddDbContext<EntropyContext>
             (options => options.UseSqlServer(sqlConnection ?? throw new InvalidOperationException("Could not extract the connection string from ENTROPY_SQL_CONNECTION variable")));
