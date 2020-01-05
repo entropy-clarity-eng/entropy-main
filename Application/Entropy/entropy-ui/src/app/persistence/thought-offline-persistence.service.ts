@@ -1,7 +1,8 @@
-import { Injectable } from '@angular/core';
-import { IndexedDbConnectionService } from './indexed-db-connection.service';
+import { Injectable, Inject } from '@angular/core';
 import { ThoughtModel } from './models/thought.model';
-import Dexie from 'dexie';
+import { LocalStorageProxyService } from './local-storage-proxy.service';
+
+
 
 @Injectable({
   providedIn: 'root'
@@ -11,18 +12,26 @@ Represents Queues for offline persistence of a thought
 */
 export class ThoughtOfflinePersistenceService {
 
-  thoughtsTable:Dexie.Table<ThoughtModel,number>;
+  
 
-  constructor(private readonly indexedDb:IndexedDbConnectionService) { 
+  constructor(private readonly localStorageProxy:LocalStorageProxyService) { 
     
-    //Create / Reference the Thought table
-    this.indexedDb.db.version(1).stores({thoughts: '++id'})
-
-    this.thoughtsTable = this.indexedDb.db.table('thoughts');
+    
   }
 
-  Add(thought:ThoughtModel):Promise<number> {
+  static GenerateKey():string {
+
+    return `thought_${Date.now()}`;
+  }
+
+  Add(thoughtText:string):void {
     
-    return this.thoughtsTable.add(thought);
+    //To-do:
+    //1): Add a method to the proxy that can take a thought and persist that. 
+    //2): Add Key generator and save thought.
+    //3): Make sure that text box is cleared and message added to the page to say a thought has been saved. 
+
+    this.localStorageProxy.setString(ThoughtOfflinePersistenceService.GenerateKey(),thoughtText);
+   
   }
 }

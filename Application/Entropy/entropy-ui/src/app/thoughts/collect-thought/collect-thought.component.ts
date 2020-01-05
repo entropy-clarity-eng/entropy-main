@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { ThoughtOfflinePersistenceService } from 'src/app/persistence/thought-offline-persistence.service';
 
 @Component({
   selector: 'app-collect-thought',
@@ -8,10 +9,23 @@ import { Title } from '@angular/platform-browser';
 })
 export class CollectThoughtComponent implements OnInit {
 
-  thoughtText:string="";
+  thoughtText: string = "";
 
-  constructor(titleService:Title) { 
+  constructor(titleService: Title, private readonly thoughtPersistence: ThoughtOfflinePersistenceService) {
+
     titleService.setTitle("Entropy - Collect Thoughts")
+  }
+
+  thoughtTextKeyPressEvent(event:Event) {
+    try {
+      this.thoughtPersistence.Add(this.thoughtText);
+      this.thoughtText = "";
+    } catch (exception) {
+        alert('Persistence Error!!!');
+    }
+
+
+
   }
 
   ngOnInit() {
