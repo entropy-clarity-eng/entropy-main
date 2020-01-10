@@ -55,6 +55,14 @@
                   "maximumError": "5mb"
                 }
               ]
+            },
+            "localserver": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.localserver.ts"
+                }
+              ]
             }
           }
         },
@@ -66,6 +74,8 @@
           "configurations": {
             "production": {
               "browserTarget": "entropy-ui:build:production"
+            },"localserver": {
+              "browserTarget": "entropy-ui:build:localserver"
             }
           }
         },

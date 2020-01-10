@@ -18,7 +18,7 @@ export class CollectThoughtComponent implements OnInit {
 
   thoughtTextKeyPressEvent(event:Event) {
     try {
-      this.thoughtPersistence.Add(this.thoughtText);
+      this.thoughtPersistence.add(this.thoughtText);
       this.thoughtText = "";
     } catch (exception) {
         alert('Persistence Error!!!');

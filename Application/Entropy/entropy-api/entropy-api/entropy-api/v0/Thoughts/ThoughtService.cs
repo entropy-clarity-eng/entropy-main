@@ -26,7 +26,7 @@ namespace entropyapi.Controllers.v0.Thoughts
 
             var thought = new Thought(thoughtToInsert);
    
-            thought.UTCTimeRecorded = DateTime.UtcNow;
+           
             this.context.Thoughts.Add(thought);
             await this.context.SaveChangesAsync();
         }

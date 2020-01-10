@@ -7,7 +7,7 @@ namespace entropy.entities
     public class ThoughtBindable
     {
         public String ThoughtText { get; set; }
-
+        public DateTime? UTCTimeRecorded { get; set; }
         
 
 

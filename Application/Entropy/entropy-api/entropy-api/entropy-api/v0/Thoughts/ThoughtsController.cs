@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using entropy.entities;
 using entropyapi.Controllers.v0.Thoughts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
@@ -13,6 +14,8 @@ namespace entropyapi.Controllers
     public class ThoughtsController : Controller
     {
         private IThoughtService thoughtService;
+
+       
 
         public ThoughtsController(IThoughtService thoughtService)
         {

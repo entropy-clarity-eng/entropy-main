@@ -18,6 +18,8 @@ namespace entropy_api
 {
     public class Startup
     {
+        readonly string corsPolicy = "_corsPolicy";
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -28,6 +30,18 @@ namespace entropy_api
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy(corsPolicy,
+                builder =>
+                {
+          
+                    builder.AllowAnyOrigin();
+                    builder.AllowAnyMethod();
+                    builder.AllowAnyHeader();
+                });
+            });
+
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             //Set up the database connection
@@ -56,8 +70,10 @@ namespace entropy_api
                 app.UseHsts();
             }
 
+            app.UseCors(this.corsPolicy);
             app.UseHttpsRedirection();
             app.UseMvc();
+           
 
 
         }
