@@ -19,7 +19,7 @@ export class ThoughtOfflinePersistenceService {
   constructor(private readonly localStorageProxy: LocalStorageProxyService,
                       readonly thoughtAPI: ThoughtApiPersistenceService) {
 
-    //    this.tryThoughtConsumptionStart();
+      this.tryThoughtConsumptionStart();
   
     }
 
