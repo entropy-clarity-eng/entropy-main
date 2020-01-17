@@ -2,7 +2,9 @@
   Your thought is precious
 </p>
 <p>Add Some Thoughts up in this piece</p>
-<textarea (keydown.enter)="thoughtTextKeyPressEvent($event)" [(ngModel)]="thoughtText" ></textarea>
+<div class="thought-text" contenteditable="true" (keydown.enter)="thoughtTextKeyPressEvent($event)" [(ngModel)]="thoughtText" >
+  Say it
+</div>
 
 {{thoughtText}}
 
