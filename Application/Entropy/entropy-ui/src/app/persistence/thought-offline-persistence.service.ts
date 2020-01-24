@@ -3,6 +3,8 @@ import { ThoughtModel } from './models/thought.model';
 import { LocalStorageProxyService } from './local-storage-proxy.service';
 import { ThoughtApiPersistenceService } from './thought-api-persistence.service';
 import { APIPersistenceError } from './api-persistence-error';
+import { BehaviorSubject } from 'rxjs';
+import { ThoughtPersistenceStatus } from './thought-persistence-status';
 
 
 
@@ -14,13 +16,20 @@ Represents Queues for offline persistence of a thought
 */
 export class ThoughtOfflinePersistenceService {
 
-  private isConsumingThoughtQueue: boolean = false;
-  static readonly THOUGHT_KEY_PREFIX = "thought_";
+  static readonly THOUGHT_KEY_PREFIX = 'thought_';
 
-  constructor(private readonly localStorageProxy: LocalStorageProxyService,
-    readonly thoughtAPI: ThoughtApiPersistenceService) {
+  public persistenceStatus$ = new BehaviorSubject<ThoughtPersistenceStatus>(new ThoughtPersistenceStatus());
 
-    this.tryThoughtConsumptionStart();
+  private currentPersistenceStatus = new ThoughtPersistenceStatus();
+
+  private isConsumingThoughtQueue = false;
+
+
+  constructor(readonly localStorageProxy: LocalStorageProxyService,
+              readonly thoughtAPI: ThoughtApiPersistenceService) {
+
+
+                this.tryThoughtConsumptionStart();
 
   }
 
@@ -31,7 +40,7 @@ export class ThoughtOfflinePersistenceService {
 
   add(thoughtText: string): void {
 
-    var thoughtKey = ThoughtOfflinePersistenceService.GenerateKey();
+    const thoughtKey = ThoughtOfflinePersistenceService.GenerateKey();
     this.localStorageProxy.setString(thoughtKey, thoughtText);
     this.tryThoughtConsumptionStart();
 
@@ -47,24 +56,29 @@ export class ThoughtOfflinePersistenceService {
   private consumeThoughtsRecursive(): void {
 
 
-    var thoughtKeys = this.getThoughtKeysOrdered();
+    const thoughtKeys = this.getThoughtKeysOrdered();
+    const thoughtsLeftInLocalStorage = thoughtKeys.length;
+    // Create a new persistence status to be published out after this consumption cycle is complete.
+    const newThoughtPersistenceStatus = new ThoughtPersistenceStatus();
+    Object.assign(this.currentPersistenceStatus, newThoughtPersistenceStatus);
+    newThoughtPersistenceStatus.thoughtsLeftToPersist = thoughtsLeftInLocalStorage;
 
-    if (thoughtKeys.length == 0) {
+    if (thoughtsLeftInLocalStorage === 0) {
+     
       console.log(`End of thoughts to be processed in local storage.`);
       this.isConsumingThoughtQueue = false;
-    }
-    else {
-      var earliestKey = thoughtKeys[0];
-      var thoughtText = this.localStorageProxy.getItem(earliestKey);
+    } else {
+      const earliestKey = thoughtKeys[0];
+      const thoughtText = this.localStorageProxy.getItem(earliestKey);
 
       if (!thoughtText) {
 
-        //TO-DO: Raise error event so user is aware, but we shouldn't stop queue processing. 
+        // TO-DO: Raise error event so user is aware, but we shouldn't stop queue processing. 
         console.error(`Could not locate thought in local storage. Key: ${earliestKey}`);
 
       } else {
-        var thoughtModel = new ThoughtModel();
-        var thoughtDate = earliestKey.split(ThoughtOfflinePersistenceService.THOUGHT_KEY_PREFIX)[1];
+        const thoughtModel = new ThoughtModel();
+        const thoughtDate = earliestKey.split(ThoughtOfflinePersistenceService.THOUGHT_KEY_PREFIX)[1];
 
         thoughtModel.UTCTimeRecorded = new Date(Number.parseInt(thoughtDate));
         thoughtModel.thoughtText = thoughtText;
@@ -72,23 +86,36 @@ export class ThoughtOfflinePersistenceService {
         this.thoughtAPI.addThought(thoughtModel).then(() => {
           console.log(`Consumed and persisted thought: ${earliestKey}`);
           this.localStorageProxy.removeItem(earliestKey);
+          this.currentPersistenceStatus.thoughtsLeftToPersist = this.getThoughtKeysOrdered().length;
+          this.currentPersistenceStatus = newThoughtPersistenceStatus;
+          this.persistenceStatus$.next(newThoughtPersistenceStatus);
           this.consumeThoughtsRecursive();
         }, (error: APIPersistenceError) => {
-          if (error.isConnectionError == true) {
+          if (error.isConnectionError === true) {
             console.warn('Connection error found, lets retry');
-            window.setTimeout(this.consumeThoughtsRecursive.bind(this), 30000)
+            newThoughtPersistenceStatus.isConnectionAlive = false;
+            newThoughtPersistenceStatus.retrySecondsLeft = 30;
+            this.currentPersistenceStatus = newThoughtPersistenceStatus;
+            this.persistenceStatus$.next(newThoughtPersistenceStatus);
+            window.setTimeout(this.consumeThoughtsRecursive.bind(this), 30000);
           } else {
-            //TO-DO: Handle this properly. 
-            console.error("Duff thought for some reason, you can contact support matey.");
+            // TO-DO: Handle this properly.
+            newThoughtPersistenceStatus.isConnectionAlive = false;
+            newThoughtPersistenceStatus.retrySecondsLeft = 30;
+            newThoughtPersistenceStatus.unrecoverableErrorsThisSession += 1;
+            this.currentPersistenceStatus = newThoughtPersistenceStatus;
+            this.persistenceStatus$.next(newThoughtPersistenceStatus);
+            console.error(' Duff thought for some reason, you can contact support matey.');
           }
         });
       }
 
     }
+   
 
   }
 
-  //Get an alphabetically, descending list of thought keys from local storage. 
+  // Get an alphabetically, descending list of thought keys from local storage. 
   private getThoughtKeysOrdered(): Array<string> {
 
     var keys = new Array<string>();
