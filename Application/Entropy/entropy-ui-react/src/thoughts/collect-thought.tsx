@@ -4,7 +4,9 @@ import React from 'react';
 const CollectThought: React.FC = () => {
     
     return(
-        <div>Entropy React Engine fired up</div>
+        <textarea lass="thought-text" >
+        Speak your mind and press enter.
+      </textarea>
     )
 }
 
