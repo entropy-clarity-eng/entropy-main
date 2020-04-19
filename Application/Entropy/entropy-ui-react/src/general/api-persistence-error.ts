@@ -2,25 +2,24 @@
 //Represents a rich error object for HTTP related errors
 ///TO-DO: Hook this up to an AXIOS errors to get same result
 
+import { AxiosError } from "axios";
+
 
 
 export class APIPersistenceError {
     
     public isConnectionError:boolean;
+    
 
-    constructor(public sourceError:HttpErrorResponse ) {
+    constructor(public readonly sourceError:AxiosError ) {
        
-        if (sourceError.error instanceof ErrorEvent) {
+        if (sourceError.request) {
       
-            this.isConnectionError = false;
+            this.isConnectionError = true;
             
             
           } else {
-           if(sourceError.status == 0) {
-               this.isConnectionError = true;
-           } else {
-               this.isConnectionError  = false;
-           }
+           this.isConnectionError = false;
              
           }
 

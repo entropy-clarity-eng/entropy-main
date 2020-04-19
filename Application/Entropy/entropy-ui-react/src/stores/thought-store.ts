@@ -2,6 +2,7 @@
 import { ThoughtPersistenceStatus } from "../thoughts/thought-persistence-status";
 import { ThoughtModel } from "../thoughts/thought-model";
 import { ThoughtAPI } from "../thoughts/thought-api";
+import { APIPersistenceError } from "../general/api-persistence-error";
  
  export const THOUGHT_KEY_PREFIX = 'thought_';
 
@@ -70,7 +71,7 @@ import { ThoughtAPI } from "../thoughts/thought-api";
                 newThoughtPersistenceStatus.isConnectionAlive = false;
                 newThoughtPersistenceStatus.retrySecondsLeft = 30;
                 this.currentPersistenceStatus = newThoughtPersistenceStatus;
-                this.persistenceStatus$.next(newThoughtPersistenceStatus);
+                this.currentPersistenceStatus = newThoughtPersistenceStatus;
                 window.setTimeout(this.consumeThoughtsRecursive.bind(this), 30000);
               } else {
                 // TO-DO: Handle this properly.
@@ -78,7 +79,7 @@ import { ThoughtAPI } from "../thoughts/thought-api";
                 newThoughtPersistenceStatus.retrySecondsLeft = 30;
                 newThoughtPersistenceStatus.unrecoverableErrorsThisSession += 1;
                 this.currentPersistenceStatus = newThoughtPersistenceStatus;
-                this.persistenceStatus$.next(newThoughtPersistenceStatus);
+                this.currentPersistenceStatus = newThoughtPersistenceStatus;
                 console.error(' Duff thought for some reason, you can contact support matey.');
               }
             });
@@ -94,13 +95,18 @@ import { ThoughtAPI } from "../thoughts/thought-api";
     
         var keys = new Array<string>();
     
-        for (var i = 0; i < this.localStorageProxy.length(); i++) {
+        for (var i = 0; i < localStorage.length; i++) {
     
-          var key = this.localStorageProxy.key(i);
-          keys.push(key);
+          var key = localStorage.key(i);
+          if(key) {
+            keys.push(key);
+          } else {
+            console.log(`No thought for key: ${key}`);
+          }
+          
         }
     
-        keys = keys.filter((value) => { return value.indexOf(ThoughtOfflinePersistenceService.THOUGHT_KEY_PREFIX) != -1 });
+        keys = keys.filter((value) => { return value.indexOf(THOUGHT_KEY_PREFIX) != -1 });
     
         return keys.sort(
           (a, b) => {
