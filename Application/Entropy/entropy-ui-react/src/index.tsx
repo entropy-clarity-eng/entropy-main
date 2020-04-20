@@ -4,7 +4,16 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { RootStore } from './stores/root-store';
-import {Provider} from 'mobx-react';
+import {Provider, MobXProviderContext} from 'mobx-react';
+
+export function useProviderStore():any{
+  return React.useContext(MobXProviderContext);
+}
+
+export function useRootStore():RootStore {
+  const {rootStore} = useProviderStore();
+  return rootStore;
+}
 
 ReactDOM.render(
   <React.StrictMode>

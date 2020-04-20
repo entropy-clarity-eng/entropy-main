@@ -1,8 +1,12 @@
 import React from 'react';
+import { useRootStore } from '../index';
+import { ThoughtStore } from '../stores/thought-store';
 
 
 const CollectThought: React.FC = () => {
   
+    const {thoughtStore} = useRootStore();
+
     let [thoughtText, setThoughtText] = React.useState("");
 
     const onThoughtChange = (event:React.ChangeEvent<HTMLTextAreaElement>):void => {
@@ -10,10 +14,15 @@ const CollectThought: React.FC = () => {
         setThoughtText(event.currentTarget.value)
     }
 
-    const onThoughtKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>):void => {
+    const onThoughtKeyDown = async (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
 
       if(event.key === "Enter") {
-        console.log("Enter Key found");
+       try {
+        await thoughtStore.add(event.currentTarget.value);
+        setThoughtText("");
+       } catch(error) {
+         alert('An error occurred whilst saving thoughts');
+       }
       }
     
     }

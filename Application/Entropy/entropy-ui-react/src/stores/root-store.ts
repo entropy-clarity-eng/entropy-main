@@ -1,7 +1,7 @@
 import { ThoughtStore } from "./thought-store";
 
 export class RootStore {
-    thoughtStore: any;
+    thoughtStore: ThoughtStore;
 
     constructor() {
         this.thoughtStore = new ThoughtStore();

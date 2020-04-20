@@ -16,12 +16,17 @@ import { APIPersistenceError } from "../general/api-persistence-error";
     @action
     add(thoughtText: string)  {
         const key = ThoughtStore.GenerateKey();
-
         localStorage.setItem(key,thoughtText);
+        this.tryThoughtConsumptionStart();        
 
     }
 
-    
+    private tryThoughtConsumptionStart() {
+      if (!this.isConsumingThoughtQueue) {
+        this.isConsumingThoughtQueue = true;
+        this.consumeThoughtsRecursive();
+      }
+    }
 
     static GenerateKey(): string {
 
