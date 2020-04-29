@@ -1,6 +1,7 @@
 import React from 'react';
 import { useRootStore } from '../index';
 import { ThoughtStore } from '../stores/thought-store';
+import { Editor, EditorState } from 'draft-js';
 
 
 const CollectThought: React.FC = () => {
@@ -27,8 +28,12 @@ const CollectThought: React.FC = () => {
     
     }
     
+    const [editorState, setEditorState] = React.useState(
+      EditorState.createEmpty()
+    );
+
     return(
-       <textarea name="thoughtTextArea" onKeyDown={onThoughtKeyDown} value={thoughtText} onChange={onThoughtChange}></textarea>
+       <Editor editorState={editorState} onChange={setEditorState} />
     )
 }
 
