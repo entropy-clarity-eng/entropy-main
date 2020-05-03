@@ -1,7 +1,8 @@
 import React from 'react';
 import { useRootStore } from '../index';
 import { ThoughtStore } from '../stores/thought-store';
-import { Editor, EditorState } from 'draft-js';
+import { Editor, EditorState, RichUtils } from 'draft-js';
+import 'draft-js/dist/Draft.css'
 
 
 const CollectThought: React.FC = () => {
@@ -32,8 +33,10 @@ const CollectThought: React.FC = () => {
       EditorState.createEmpty()
     );
 
+    
+
     return(
-       <Editor editorState={editorState} onChange={setEditorState} />
+       <Editor editorState={editorState} textAlignment={'center'} onChange={setEditorState} />
     )
 }
 
