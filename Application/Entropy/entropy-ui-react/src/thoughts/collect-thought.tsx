@@ -1,7 +1,7 @@
 import React from 'react';
 import { useRootStore } from '../index';
 import { ThoughtStore } from '../stores/thought-store';
-import { Editor, EditorState, RichUtils } from 'draft-js';
+import { Editor, EditorState } from 'draft-js';
 import 'draft-js/dist/Draft.css'
 import { EditorContainer } from './collect-thought-container';
 import { relative } from 'path';
@@ -31,15 +31,26 @@ const CollectThought: React.FC = () => {
     
     }
     
+    const editorRef = React.createRef<Editor>();
+
+    React.useLayoutEffect(()=>{
+      editorRef.current?.focus();
+    },[]);
+
     const [editorState, setEditorState] = React.useState(
       EditorState.createEmpty()
     );
 
+    const containerClick = () => {
+      editorRef.current?.focus();
+    }
     
 
     return(
-       <EditorContainer>
-       <Editor editorState={editorState} textAlignment={'center'} onChange={setEditorState} />
+       <EditorContainer onClick={containerClick}>
+       <div>
+       <Editor ref={editorRef} editorState={editorState} textAlignment={'center'} onChange={setEditorState} />
+       </div>
        </EditorContainer>
     )
 }
