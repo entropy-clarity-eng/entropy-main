@@ -1,45 +1,62 @@
 import React from 'react';
 import { useRootStore } from '../index';
-import { ThoughtStore } from '../stores/thought-store';
-import { Editor, EditorState } from 'draft-js';
+
+import { Editor, EditorState, getDefaultKeyBinding, DraftEditorCommand, SelectionState, Modifier } from 'draft-js';
 import 'draft-js/dist/Draft.css'
 import { EditorContainer } from './collect-thought-container';
-import { relative } from 'path';
 
+import { EditorCommands } from '../general/editor-commands';
+//Have to export this here as it is not properly exported from Draft JS typings. 
+type SyntheticKeyboardEvent = React.KeyboardEvent<{}>;
 
 const CollectThought: React.FC = () => {
   
     const {thoughtStore} = useRootStore();
 
-    let [thoughtText, setThoughtText] = React.useState("");
-
-    const onThoughtChange = (event:React.ChangeEvent<HTMLTextAreaElement>):void => {
-
-        setThoughtText(event.currentTarget.value)
-    }
-
-    const onThoughtKeyDown = async (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    
+    const [editorState, setEditorState] = React.useState(
+      EditorState.createEmpty()
+    );
+   
+    const onThoughtKeyDown =  (event: SyntheticKeyboardEvent):null | EditorCommands | DraftEditorCommand => {
 
       if(event.key === "Enter") {
-       try {
-        await thoughtStore.add(event.currentTarget.value);
-        setThoughtText("");
-       } catch(error) {
-         alert('An error occurred whilst saving thoughts');
-       }
+       return  "CLEAR_AND_COLLECT_THOUGHT";
+       
+      } else {
+        return getDefaultKeyBinding(event);
       }
-    
     }
     
+    const onThoughtKeyCommand = (command: string, editorState: EditorState, eventTimeStamp: number):any => {
+      if(command) {
+        switch(command) {
+          case "CLEAR_AND_COLLECT_THOUGHT":
+                persistThought();
+                break;
+        }
+      }
+    }
+  
+    const persistThought = async ()  => {
+       var thoughtText = editorState.getCurrentContent().getPlainText("\n");
+
+       await thoughtStore.add(thoughtText);
+       clearEditor();
+    }
+
+    const clearEditor = () => {
+  
+      setEditorState( EditorState.createEmpty() );
+    }
+
     const editorRef = React.createRef<Editor>();
 
     React.useLayoutEffect(()=>{
       editorRef.current?.focus();
-    },[]);
+    },[editorRef]);
 
-    const [editorState, setEditorState] = React.useState(
-      EditorState.createEmpty()
-    );
+   
 
     const containerClick = () => {
       editorRef.current?.focus();
@@ -49,7 +66,10 @@ const CollectThought: React.FC = () => {
     return(
        <EditorContainer onClick={containerClick}>
        <div>
-       <Editor ref={editorRef} editorState={editorState} textAlignment={'center'} onChange={setEditorState} />
+       <Editor ref={editorRef} keyBindingFn = {onThoughtKeyDown}
+        editorState={editorState} textAlignment={'center'} 
+        onChange={setEditorState}
+        handleKeyCommand = {onThoughtKeyCommand} />
        </div>
        </EditorContainer>
     )
