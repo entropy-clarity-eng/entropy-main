@@ -38,7 +38,7 @@ import { APIPersistenceError } from "../general/api-persistence-error";
 
         const thoughtKeys = this.getThoughtKeysOrdered();
         const thoughtsLeftInLocalStorage = thoughtKeys.length;
-        // Create a new persistence status to be published out after this consumption cycle is complete.
+        // Create a new persistence status.
         const newThoughtPersistenceStatus = new ThoughtPersistenceStatus();
         Object.assign(this.currentPersistenceStatus, newThoughtPersistenceStatus);
         newThoughtPersistenceStatus.thoughtsLeftToPersist = thoughtsLeftInLocalStorage;
@@ -65,7 +65,8 @@ import { APIPersistenceError } from "../general/api-persistence-error";
     
             ThoughtAPI.addThought(thoughtModel).then(() => {
               console.log(`Consumed and persisted thought: ${earliestKey}`);
-             localStorage.removeItem(earliestKey);
+             
+              localStorage.removeItem(earliestKey);
               this.currentPersistenceStatus.thoughtsLeftToPersist = this.getThoughtKeysOrdered().length;
               this.currentPersistenceStatus = newThoughtPersistenceStatus;
               this.currentPersistenceStatus = newThoughtPersistenceStatus;
@@ -111,7 +112,7 @@ import { APIPersistenceError } from "../general/api-persistence-error";
           
         }
     
-        keys = keys.filter((value) => { return value.indexOf(THOUGHT_KEY_PREFIX) != -1 });
+        keys = keys.filter((value) => { return value.indexOf(THOUGHT_KEY_PREFIX) !== -1 });
     
         return keys.sort(
           (a, b) => {

@@ -72,6 +72,7 @@ const CollectThought: React.FC = () => {
         handleKeyCommand = {onThoughtKeyCommand} />
        </div>
        </EditorContainer>
+       
     )
 }
 
