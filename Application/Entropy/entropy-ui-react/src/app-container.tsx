@@ -7,8 +7,9 @@ const AppContainer = observer(props => {
     ////TO-DO: Import an svg. 
     return (<React.Fragment>
        <AppTopBar>
-           <div className="title">App Top Bar is live</div>
-       
+       <div className="menu-container">Menu</div>
+       <div className="title">App Top Bar is live</div>
+       <div className="upload-status-container">Upload Status</div>
        </AppTopBar>
         {props.children}
     </React.Fragment>);
