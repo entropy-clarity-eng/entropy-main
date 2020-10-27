@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const EditorContainer = styled.div `
-height: 100vh;
-width: 100vw;
+height: 100%;
+width: 100%;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -13,7 +13,5 @@ flex-direction: column;
 flex-grow:4;
 width:40vw;
 
-}
-
-`
+}`
 

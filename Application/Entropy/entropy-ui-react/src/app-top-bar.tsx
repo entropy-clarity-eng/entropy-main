@@ -9,21 +9,21 @@ align-items: right;
 flex-direction: row;
 
 .title {
-    width: 70px;
-    flex-grow: 3;
+    width: 20%;
     text-align: center;
+    font-size: 22px;
+    padding: 10px;
 }
 
 .upload-status-container {
-    flex-grow: 4;
+    width: 40%;
     text-align:right;
 }
 
 .menu-container {
- flex-grow: 3;
+ width: 40%;
  text-align: left;
 }
 
-}
+}`
 
-`

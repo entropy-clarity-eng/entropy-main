@@ -1,9 +1,9 @@
 import React from 'react';
 import { useRootStore } from '../index';
 
-import { Editor, EditorState, getDefaultKeyBinding, DraftEditorCommand, SelectionState, Modifier } from 'draft-js';
+import { Editor, EditorState, getDefaultKeyBinding, DraftEditorCommand } from 'draft-js';
 import 'draft-js/dist/Draft.css'
-import { EditorContainer } from './collect-thought-container';
+import { EditorContainer } from './editor-container';
 
 import { EditorCommands } from '../general/editor-commands';
 //Have to export this here as it is not properly exported from Draft JS typings. 
