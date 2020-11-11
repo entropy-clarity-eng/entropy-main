@@ -6,49 +6,25 @@
    xmlns:svg="http://www.w3.org/2000/svg"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   sodipodi:docname="upload-in-progress.svg"
-   inkscape:version="1.0 (4035a4f, 2020-05-01)"
-   id="svg8"
+   width="103.55453mm"
+   height="58.556927mm"
+   viewBox="0 0 103.55453 58.556927"
    version="1.1"
-   viewBox="0 0 210 297"
-   height="297mm"
-   width="210mm">
+   id="svg8">
   <defs
      id="defs2">
     <clipPath
-       clipPathUnits="userSpaceOnUse"
-       id="clipPath862">
+       id="clipPath862"
+       clipPathUnits="userSpaceOnUse">
       <use
-         x="0"
-         y="0"
+         height="100%"
+         width="100%"
+         id="use864"
          xlink:href="#g858"
-         id="use864" />
+         y="0"
+         x="0" />
     </clipPath>
   </defs>
-  <sodipodi:namedview
-     inkscape:window-maximized="0"
-     inkscape:window-y="0"
-     inkscape:window-x="0"
-     inkscape:window-height="1440"
-     inkscape:window-width="2560"
-     inkscape:snap-intersection-paths="false"
-     inkscape:object-paths="true"
-     inkscape:snap-smooth-nodes="true"
-     showgrid="false"
-     inkscape:document-rotation="0"
-     inkscape:current-layer="layer3"
-     inkscape:document-units="mm"
-     inkscape:cy="550.2351"
-     inkscape:cx="308.65242"
-     inkscape:zoom="0.49887767"
-     inkscape:pageshadow="2"
-     inkscape:pageopacity="0.0"
-     borderopacity="1.0"
-     bordercolor="#666666"
-     pagecolor="#ffffff"
-     id="base" />
   <metadata
      id="metadata5">
     <rdf:RDF>
@@ -62,65 +38,45 @@
     </rdf:RDF>
   </metadata>
   <g
-     id="layer1"
-     inkscape:groupmode="layer"
-     inkscape:label="Cloud"
-     sodipodi:insensitive="true">
+     transform="translate(-54.486272,-144.62233)"
+     id="layer1">
     <path
-       sodipodi:nodetypes="cccccc"
-       id="path1095"
+       style="fill:none;stroke:#000000;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 73.984822,198.88393 c 90.691068,0.26518 67.885708,0.79553 67.885708,0.79553 15.03019,-0.1637 18.66212,-16.87849 0,-22.275 -1.9183,-38.38681 -43.865347,-35.28905 -45.875888,-12.19821 -9.016071,-5.00564 -19.623214,-4.1571 -21.744642,13.25893 -24.301096,0.71329 -18.846247,20.46952 -0.265178,20.41875 z"
-       style="fill:none;stroke:#000000;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path1095" />
   </g>
   <g
-     style="display:inline"
-     sodipodi:insensitive="true"
-     inkscape:groupmode="layer"
+     transform="translate(-54.486272,-144.62233)"
      id="layer2"
-     inkscape:label="Upload">
+     style="display:inline">
     <g
-       id="g860"
+       transform="matrix(0.66199917,0,0,0.6715388,32.826949,63.518617)"
        clip-path="url(#clipPath862)"
-       transform="matrix(0.66199917,0,0,0.6715388,32.826949,63.518617)">
+       id="g860">
       <g
-         inkscape:label="Clip"
          id="g858">
         <path
-           transform="matrix(0.55351553,0,0,0.45104398,45.23119,89.384707)"
-           inkscape:transform-center-y="-0.59202563"
-           inkscape:transform-center-x="-0.51249347"
-           d="M 139.10238,192.54151 93.745742,193.22688 115.83052,153.6042 Z"
-           inkscape:randomized="0"
-           inkscape:rounded="0"
-           inkscape:flatsided="true"
-           sodipodi:arg2="1.5556868"
-           sodipodi:arg1="0.50848933"
-           sodipodi:r2="4.3289943"
-           sodipodi:r1="26.189655"
-           sodipodi:cy="179.79086"
-           sodipodi:cx="116.22621"
-           sodipodi:sides="3"
-           id="path848"
            style="stroke-width:7"
-           sodipodi:type="star" />
+           id="path848"
+           d="M 139.10238,192.54151 93.745742,193.22688 115.83052,153.6042 Z"
+           transform="matrix(0.55351553,0,0,0.45104398,45.23119,89.384707)" />
         <rect
-           y="176.43687"
-           x="105.37588"
-           height="16.945532"
-           width="7.4917665"
+           style="stroke-width:8.7099"
            id="rect854"
-           style="stroke-width:8.7099" />
+           width="7.4917665"
+           height="16.945532"
+           x="105.37588"
+           y="176.43687" />
       </g>
     </g>
   </g>
   <g
      style="display:none"
-     inkscape:label="Upload_Complete"
-     id="layer3"
-     inkscape:groupmode="layer">
+     transform="translate(-54.486272,-144.62233)"
+     id="layer3">
     <path
-       id="path847"
+       style="fill:none;stroke:#000000;stroke-width:5.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
        d="m 90.093259,179.01436 12.397111,9.33885 26.93168,-25.61515"
-       style="fill:none;stroke:#000000;stroke-width:5.25;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
+       id="path847" />
   </g>
 </svg>
