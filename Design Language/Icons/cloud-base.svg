@@ -14,7 +14,10 @@
    version="1.1"
    viewBox="0 0 103.55453 58.556927"
    height="58.556927mm"
-   width="103.55453mm">
+   width="103.55453mm"
+   inkscape:export-filename="/Users/joelee/Documents/entropy-main/Application/Entropy/entropy-ui-react/public/icons/upload-in-progress.png"
+   inkscape:export-xdpi="29.433769"
+   inkscape:export-ydpi="29.433769">
   <defs
      id="defs2">
     <clipPath
@@ -30,10 +33,11 @@
     </clipPath>
   </defs>
   <sodipodi:namedview
+     inkscape:snap-nodes="false"
      inkscape:window-maximized="0"
-     inkscape:window-y="0"
+     inkscape:window-y="23"
      inkscape:window-x="0"
-     inkscape:window-height="1440"
+     inkscape:window-height="1328"
      inkscape:window-width="2560"
      inkscape:snap-intersection-paths="false"
      inkscape:object-paths="true"
@@ -43,7 +47,7 @@
      inkscape:current-layer="g858"
      inkscape:document-units="mm"
      inkscape:cy="3.6310298"
-     inkscape:cx="102.72005"
+     inkscape:cx="-283.14609"
      inkscape:zoom="0.49887767"
      inkscape:pageshadow="2"
      inkscape:pageopacity="0.0"
@@ -59,7 +63,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>
@@ -86,15 +90,15 @@
        style="stroke:#1192ee;stroke-opacity:1"
        id="g860"
        clip-path="url(#clipPath862)"
-       transform="matrix(0.66199917,0,0,0.6715388,32.826949,63.518617)">
+       transform="matrix(0.66008447,0,0,1.1487397,43.6807,-28.343368)">
       <g
          style="stroke:#1192ee;stroke-opacity:1"
          inkscape:label="Clip"
          id="g858">
         <path
-           transform="matrix(0.55351553,0,0,0.45104398,45.23119,89.384707)"
-           inkscape:transform-center-y="-0.59202563"
-           inkscape:transform-center-x="-0.51249347"
+           transform="matrix(0.83066806,0,0,0.43031687,13.365474,93.404442)"
+           inkscape:transform-center-y="-0.56481857"
+           inkscape:transform-center-x="-0.76910556"
            d="M 139.10238,192.54151 93.745742,193.22688 115.83052,153.6042 Z"
            inkscape:randomized="0"
            inkscape:rounded="0"
@@ -107,19 +111,20 @@
            sodipodi:cx="116.22621"
            sodipodi:sides="3"
            id="path848"
-           style="stroke:#1192ee;stroke-width:7;stroke-opacity:1;fill:#1f8ed4;fill-opacity:1"
+           style="fill:#1f8ed4;fill-opacity:1;stroke:#1192ee;stroke-width:7;stroke-opacity:1"
            sodipodi:type="star" />
         <rect
-           y="176.43687"
-           x="105.37588"
-           height="16.945532"
-           width="7.4917665"
+           y="175.75328"
+           x="107.07632"
+           height="18.312723"
+           width="4.0801053"
            id="rect854"
-           style="stroke:#1192ee;stroke-width:8.7099;stroke-opacity:1" />
+           style="stroke:#1192ee;stroke-width:6.68199;stroke-opacity:1" />
       </g>
     </g>
   </g>
   <g
+     sodipodi:insensitive="true"
      style="display:none"
      inkscape:label="Upload_Complete"
      id="layer3"

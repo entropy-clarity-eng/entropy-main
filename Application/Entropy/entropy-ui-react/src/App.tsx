@@ -11,7 +11,10 @@ function App() {
           <AppTopBar>
        <div className="menu-container">Menu</div>
       <div className="title">Entropy</div>
-      <div className="upload-status-container"><img className="cloud-icon" src="/icons/upload-completed.svg" alt="ok"/></div>
+      <div className="upload-status-container">
+        <img className="cloud-icon" src="/icons/upload-complete.png" alt="ok"/>
+        <img className="cloud-icon" src="/icons/upload-in-progress.png" alt="ok"/>
+        </div>
        </AppTopBar>
         <CollectThought />
     </AppContainer>
