@@ -42,7 +42,8 @@ import { APIPersistenceError } from "../general/api-persistence-error";
         const newThoughtPersistenceStatus = new ThoughtPersistenceStatus();
         Object.assign(this.currentPersistenceStatus, newThoughtPersistenceStatus);
         newThoughtPersistenceStatus.thoughtsLeftToPersist = thoughtsLeftInLocalStorage;
-    
+        this.currentPersistenceStatus = newThoughtPersistenceStatus;
+
         if (thoughtsLeftInLocalStorage === 0) {
          
           console.log(`End of thoughts to be processed in local storage.`);

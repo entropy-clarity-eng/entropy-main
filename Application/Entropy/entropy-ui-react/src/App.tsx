@@ -4,9 +4,10 @@ import CollectThought from './thoughts/collect-thought';
 import { AppContainer } from './app-container';
 import { AppTopBar } from './app-top-bar';
 import { useRootStore } from '.';
+import { observer } from "mobx-react-lite";
 
 
-function App() {
+ const App = observer(() => {
   
   const {thoughtStore} = useRootStore();
 
@@ -23,6 +24,6 @@ function App() {
         <CollectThought />
     </AppContainer>
   );
-}
+}); 
 
 export default App;

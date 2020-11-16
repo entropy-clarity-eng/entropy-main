@@ -15,9 +15,9 @@
    viewBox="0 0 103.55453 58.556927"
    height="58.556927mm"
    width="103.55453mm"
-   inkscape:export-filename="/Users/joelee/Documents/entropy-main/Application/Entropy/entropy-ui-react/public/icons/upload-in-progress.png"
-   inkscape:export-xdpi="29.433769"
-   inkscape:export-ydpi="29.433769">
+   inkscape:export-filename="/Users/joelee/Documents/entropy-main/Application/Entropy/entropy-ui-react/public/icons/upload-complete.png"
+   inkscape:export-xdpi="29.496082"
+   inkscape:export-ydpi="29.496082">
   <defs
      id="defs2">
     <clipPath
@@ -81,7 +81,7 @@
        style="fill:none;stroke:#908888;stroke-width:7;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:0.407258" />
   </g>
   <g
-     style="display:inline"
+     style="display:none"
      inkscape:groupmode="layer"
      id="layer2"
      inkscape:label="Upload"
@@ -114,18 +114,18 @@
            style="fill:#1f8ed4;fill-opacity:1;stroke:#1192ee;stroke-width:7;stroke-opacity:1"
            sodipodi:type="star" />
         <rect
-           y="175.75328"
-           x="107.07632"
-           height="18.312723"
-           width="4.0801053"
+           y="176.07547"
+           x="105.93938"
+           height="16.747055"
+           width="7.9681125"
            id="rect854"
-           style="stroke:#1192ee;stroke-width:6.68199;stroke-opacity:1" />
+           style="stroke:#1192ee;stroke-width:8.92978;stroke-opacity:1" />
       </g>
     </g>
   </g>
   <g
      sodipodi:insensitive="true"
-     style="display:none"
+     style="display:inline"
      inkscape:label="Upload_Complete"
      id="layer3"
      inkscape:groupmode="layer"
