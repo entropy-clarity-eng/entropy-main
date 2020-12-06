@@ -20,12 +20,10 @@ padding-right: 5px;
     padding: 10px;
 }
 
-.upload-status-container {
+.cloud-icon-container {
     width: 40%;
     height:100%;
-    display: flex;
-    justify-content: flex-end; 
-    align-items: center; 
+    position: relative;
 }
 
 .menu-container {
@@ -33,9 +31,20 @@ padding-right: 5px;
  text-align: left;
 }
 
-.cloud-icon {
+.cloud-base {
+    position: relative;
+    top: 0;
+    left: 0;
     width: 30px;
     height: 15px;
+}
+
+.cloud-icon {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 30px;
+    height:15px;
 }
 
 }`

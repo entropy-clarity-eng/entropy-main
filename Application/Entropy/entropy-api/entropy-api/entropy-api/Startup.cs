@@ -72,7 +72,7 @@ namespace entropy_api
 
             app.UseCors(this.corsPolicy);
             app.UseHttpsRedirection();
-            app.UseMvc();
+        
            
 
 

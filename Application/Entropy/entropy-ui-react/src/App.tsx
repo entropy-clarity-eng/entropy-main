@@ -13,12 +13,13 @@ import { observer } from "mobx-react-lite";
 
   return (
     <AppContainer>
-          <AppTopBar>
-       <div className="menu-container">Menu</div>
+          <AppTopBar> 
+       <div className="menu-container">Menu</div> {/*TO-DO: Use this as the container that makes sure all of it's compaonents are nicely spread out.  */}
       <div className="title">Entropy</div>
-      <div className="upload-status-container">
-       {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist === 0 && <img className="cloud-icon" src="/icons/upload-complete.png" alt="ok"/>} 
-       {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist > 0 &&  <img className="cloud-icon" src="/icons/upload-in-progress.png" alt="ok"/>}
+      <div className="cloud-icon-container"> 
+        <img className = "cloud-base" src="/icons/cloud-base.png" alt="upload" />
+       {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist === 0 && <img className="cloud-icon" src="/icons/upload-completed.png" alt="ok"/>} 
+       {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist > 0 &&  <img className="cloud-icon" src="/icons/upload-in-progress.png" alt="uploading"/>}
         </div>
        </AppTopBar>
         <CollectThought />
