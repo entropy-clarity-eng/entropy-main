@@ -4,8 +4,8 @@ export const AppTopBar = styled.div `
 height: 50px;
 width: 99vw;
 display: flex;
-justify-content: flex-end;
-align-items: right;
+justify-content: space-between;
+align-items: center;
 flex-direction: row;
 -webkit-box-shadow: 0 3px 6px -6px black;
 -moz-box-shadow: 0 3px 6px -6px black;
@@ -13,22 +13,19 @@ box-shadow: 0 3px 6px -6px black;
 padding-left: 5px;
 padding-right: 5px; 
 
+.top-bar-item {
+    width: 90px;
+    padding: 10px;
+    height:100%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .title {
     width: 20%;
     text-align: center;
     font-size: 22px;
-    padding: 10px;
-}
-
-.cloud-icon-container {
-    width: 40%;
-    height:100%;
-    position: relative;
-}
-
-.menu-container {
- width: 40%;
- text-align: left;
 }
 
 .cloud-base {
@@ -45,6 +42,11 @@ padding-right: 5px;
     left: 0;
     width: 30px;
     height:15px;
+}
+
+.icon {
+ position: relative;
+ width: 40%;
 }
 
 }`
