@@ -49,5 +49,23 @@ padding-right: 5px;
  width: 40%;
 }
 
+.cloud-icon-upload-complete-enter {
+  opacity: 0;
+}
+
+.cloud-icon-upload-complete-enter-active {
+  opacity: 1;
+  transition: opacity 2s;
+}
+
+.cloud-icon-upload-complete-exit {
+  opacity: 1;
+  transition: opacity 2s;
+}
+.cloud-icon-upload-complete-exit-active {
+  opacity: 0;
+  transition: opacity 1ms;
+}
+
 }`
 

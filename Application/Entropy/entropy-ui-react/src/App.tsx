@@ -6,11 +6,15 @@ import { AppTopBar } from './app-top-bar';
 import { useRootStore } from '.';
 import { observer } from "mobx-react-lite";
 
+import { CSSTransition } from 'react-transition-group';
 
- const App = observer(() => {
+
+const App = observer(() => {
   
-  const {thoughtStore} = useRootStore();
+const {thoughtStore} = useRootStore();
+const nodeRef = React.useRef(null);
 
+  
   return (
     <AppContainer>
           <AppTopBar> 
@@ -19,7 +23,12 @@ import { observer } from "mobx-react-lite";
       <div className="top-bar-item"> 
         <div className="icon">
         <img className = "cloud-base" src="/icons/cloud-base.png" alt="upload" />
-       {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist === 0 && <img className="cloud-icon" src="/icons/upload-completed.png" alt="ok"/>} 
+        <CSSTransition nodeRef={nodeRef} in={thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist === 0} timeout={2000} classNames="cloud-icon-upload-complete">
+          <div ref={nodeRef}>
+              <img className="cloud-icon" src="/icons/upload-completed.png" alt="ok"/>
+          </div>
+   
+    </CSSTransition> 
        {thoughtStore.currentPersistenceStatus.thoughtsLeftToPersist > 0 &&  <img className="cloud-icon" src="/icons/upload-in-progress.png" alt="uploading"/>}
        </div>
         </div>

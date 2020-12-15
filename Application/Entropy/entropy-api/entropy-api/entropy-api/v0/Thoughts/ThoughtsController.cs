@@ -10,8 +10,10 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace entropyapi.Controllers
 {
+   
+    [ApiController]
     [Route("api/v1/[controller]")]
-    public class ThoughtsController : Controller
+    public class ThoughtsController : ControllerBase
     {
         private IThoughtService thoughtService;
 
@@ -33,9 +35,9 @@ namespace entropyapi.Controllers
         /// </summary>
         /// <param name="thought">ThoughtModel</param>        
         [HttpPost]
-        public Task Post([FromBody]Thought thought)
+        public async Task Post([FromBody]Thought thought)
         {
-            return this.thoughtService.InsertThought(thought);
+          await  this.thoughtService.InsertThought(thought);
         }
 
        

@@ -79,7 +79,7 @@ namespace entropy_api.tests
             //Assert (using a separate context verifies data was saved correctly)
             using (var context = new EntropyContext(options))
             {
-                Assert.Equal(context.Thoughts.First().UTCTimeRecorded, DateTime.UtcNow, TimeSpan.FromSeconds(1));
+                Assert.Equal(context.Thoughts.First().UTCTimeRecorded, DateTime.UtcNow);
             }
         }
 

@@ -10,9 +10,9 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Microsoft.EntityFrameworkCore;
 using entropy.entities;
 using entropyapi.Controllers.v0.Thoughts;
+using Microsoft.EntityFrameworkCore;
 
 namespace entropy_api
 {
@@ -42,7 +42,7 @@ namespace entropy_api
                 });
             });
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddControllers();
 
             //Set up the database connection
             var sqlConnection = Environment.GetEnvironmentVariable("ENTROPY_SQL_CONNECTION");
@@ -50,7 +50,6 @@ namespace entropy_api
             (options => options.UseSqlServer(sqlConnection ?? throw new InvalidOperationException("Could not extract the connection string from ENTROPY_SQL_CONNECTION variable")));
 
             ///Add Feature Services
-
             services.AddScoped<IThoughtService, ThoughtService>();
         }
 
@@ -72,6 +71,12 @@ namespace entropy_api
 
             app.UseCors(this.corsPolicy);
             app.UseHttpsRedirection();
+            app.UseRouting();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllers();
+            });
+
         
            
 

@@ -56,6 +56,8 @@ import { APIPersistenceError } from "../general/api-persistence-error";
     
             // TO-DO: Raise error event so user is aware, but we shouldn't stop queue processing. 
             console.error(`Could not locate thought in local storage. Key: ${earliestKey}`);
+            localStorage.removeItem(earliestKey);
+            this.consumeThoughtsRecursive();
     
           } else {
             const thoughtModel = new ThoughtModel();
